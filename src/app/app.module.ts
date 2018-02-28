@@ -1,32 +1,43 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { RecipeService } from './recipes/recipe.service';
+import { AppRoutingModule } from './app-routing.module';
+import { DataStorageService } from './shared/data-storage.service';
+import { HttpModule } from '@angular/http';
+import { AuthService } from './auth/auth.service';
+import { RecipesModule } from './recipes/recipes.module';
+import { SharedModule } from './shared/shared.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { FormsModule } from '@angular/forms';
+import { AuthModule } from './auth/auth.module';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecipesComponent,
-    ShoppingListComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    ShoppingEditComponent
+    HomeComponent,
+
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    FormsModule,
+    AppRoutingModule,
+    RecipesModule,
+    SharedModule,
+    ShoppingListModule,
+    AuthModule
   ],
-  providers: [],
+  providers: [ShoppingListService,
+              RecipeService,
+              AuthService,
+              DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
